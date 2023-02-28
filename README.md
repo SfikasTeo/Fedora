@@ -10,7 +10,7 @@ Finally fedora by default uses **[systemd](https://docs.fedoraproject.org/en-US/
 * [DNF Package Manager](https://dnf.readthedocs.io/en/latest/index.html)
 * [Fedora Packages](https://packages.fedoraproject.org/)
 
-## Using [DNF](https://docs.fedoraproject.org/en-US/quick-docs/dnf/)
+## Fedora Package management and [DNF](https://docs.fedoraproject.org/en-US/quick-docs/dnf/)
 DNF is generally considered one of the **slowest** package management systems. The first time DNF is used, a relatively **big size of metadata** from every repository must be updated, giving the first truth to the statement above. After the first use and after determining the fastest mirrors, although the package management is quite faster, **compared** to other package managers like **apt** or **pacman**, dnf lacks behind in speed. Configuring DNF with the following arguments is always recommended.
 * **Add** the following options to DNF configuration file `sudo nano /etc/dnf/dnf.conf`
 ```
@@ -30,11 +30,13 @@ defaultyes=True
  sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
  sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
  ```
+ * Enable **[flathub](https://flathub.org/home)** repositories: `flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo`
  
- ## [Install media Codecs](https://docs.fedoraproject.org/en-US/quick-docs/assembly_installing-plugins-for-playing-movies-and-music/) From RPM Fusion
+ ## Install additional [media Codecs](https://docs.fedoraproject.org/en-US/quick-docs/assembly_installing-plugins-for-playing-movies-and-music/) From RPM Fusion
 Several offline media players *like vlc or mpv* bundle all the relevant codecs by themselves.
 ```
-sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav \
+--exclude=gstreamer1-plugins-bad-free-devel
 sudo dnf install lame\* --exclude=lame-devel
 sudo dnf group upgrade --with-optional Multimedia
  ```
