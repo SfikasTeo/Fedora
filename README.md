@@ -35,11 +35,22 @@ defaultyes=True
  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
  ```
  
- ## Install additional [media Codecs](https://docs.fedoraproject.org/en-US/quick-docs/assembly_installing-plugins-for-playing-movies-and-music/) From RPM Fusion
+## Install additional [media Codecs](https://docs.fedoraproject.org/en-US/quick-docs/assembly_installing-plugins-for-playing-movies-and-music/) From RPM Fusion
 Several offline media players *like vlc or mpv* bundle all the relevant codecs by themselves.
 ```
 sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
 sudo dnf install lame\* --exclude=lame-devel
 sudo dnf group upgrade --with-optional Multimedia
  ```
-
+ 
+## Install [Visual-Studio-Code](https://code.visualstudio.com/docs/setup/linux)
+Install the provided yum repository and PGP key: 
+```
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+```
+Then update the **package cache** and install the package:
+```
+dnf check-update
+sudo dnf install code 
+```
