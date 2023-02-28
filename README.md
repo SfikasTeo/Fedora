@@ -30,7 +30,10 @@ defaultyes=True
  sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
  sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
  ```
- * Enable **[flathub](https://flathub.org/home)** repositories: `flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo`
+ * Enable **[flathub](https://flathub.org/home)** repositories: 
+ ```
+ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+ ```
  
  ## Install additional [media Codecs](https://docs.fedoraproject.org/en-US/quick-docs/assembly_installing-plugins-for-playing-movies-and-music/) From RPM Fusion
 Several offline media players *like vlc or mpv* bundle all the relevant codecs by themselves.
